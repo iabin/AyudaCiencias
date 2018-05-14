@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <h:outputStylesheet library="css" name="personal.css"  />
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Ver Usuario</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+           <b:navBar brand="Ayuda Ciencias" style="font-weight: bold; font-style: italic" brandHref="index.xhtml" inverse="true" fixed="top">
+                <b:navbarLinks>
+
+                    <b:navLink value="Agregar Pregunta" style="font-size: 20px; font-weight: normal" href="agregarPregunta.xhtml"></b:navLink>
+
+                </b:navbarLinks>
+                <h:form styleClass="navbar-form navbar-right" >
+                    #{' '}
+                    <b:commandButton rendered="#{ empty user}" action="ingresar.xhtml" value="Ingresar" look="success" icon="chevron-right" iconAlign="right"/>
+                    <b:commandButton rendered="#{ empty user}" action="a" value="Registrarse" look="success" icon="fa-key" iconAlign="right"/>
+                    <b:badge rendered="#{not empty user}"  value="#{user.nombre}"/>
+                    <b:commandButton style="margin-left: 50px" rendered="#{not empty user}" action="#{loginController.logout()}" value="Salir" look="danger" icon="fa-key" iconAlign="right"/>
+                </h:form>
+            </b:navBar>
+            <br/>  
+            <br/> 
+            <br/> 
+            <br/> 
+
+
+            <p:dataScroller value="#{verUsuarios.usuarios}" var="usuario" >          
+                <p:panelGrid columns="2">
+
+                    <h:outputText value="Nombre:" style="font-weight: bold"/>
+                    <h:outputText value="#{usuario.nombre}" />
+
+                    <h:outputText value="Correo:" style="font-weight: bold"/>
+                    <h:outputText value="#{usuario.correo}" />
+
+                    <p:commandButton value="Borrar Usuario"  rendered="#{ user.administrador}" action="#{borrarUsuario.borrarUsuario(usuario.idusuario)}"/>
+
+
+                </p:panelGrid>
+                <br/>
+            </p:dataScroller>
+        </h:body>
+
+    </f:view>
+</html>
+
