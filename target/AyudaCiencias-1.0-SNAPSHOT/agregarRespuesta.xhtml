@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Nueva Pregunta</title>
+
+        
+        <style type="text/css">
+            .form-signin {
+                margin: 0 auto;
+                max-width: 330px;
+                padding: 15px;
+            }
+        </style>
+    </h:head>
+    <h:body style="padding-top: 60px; background-color:#8FDC97 ;">
+        <b:container>
+            <h:form styleClass="form-signin" prependId="false">
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate/>
+                </p:messages>
+                <h2 class="form-signin-heading">Nueva Respuesta</h2>
+                <b:inputText id="name" placeholder="Contenido" value="#{agregarRespuesta.contenido}">
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+                
+                <b:commandButton look="primary btn-block" value="Agregar" icon="log-in" size="lg" action="#{agregarRespuesta.agregarRespuesta(user.idusuario, pregunta.idpregunta)}"/>
+            </h:form>
+        </b:container>
+    </h:body>
+</html>
+
