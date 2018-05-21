@@ -16,15 +16,18 @@ import modelo.*;
 
 /**
  *
- * @author jonathan
+ * @author Iabin
  */
 @ManagedBean
 @SessionScoped
+/**
+ * Clase que modela el caso de uso de ver respuestas
+ */
 public class VerRespuestas {
-    private Pregunta pregunta;
-    private List<Respuesta> respuestas;
-    private String id;
-    private String msg;
+    private Pregunta pregunta;//Pregunta asociada
+    private List<Respuesta> respuestas;//Respuestas de la pregunta
+    private String id;//Id de la pregunta
+    private String msg; //Mensaje a mostrar
 
     public void setId(String id) {
         this.id = id;
@@ -39,21 +42,17 @@ public class VerRespuestas {
         
     }
     
+    /**
+     * Metodo que verifica si existe una pregunta
+     * @return false si no existe, true en otro caso
+     */
     public boolean existe(){
        PreguntaDAO pdao = new PreguntaDAO();
         if(this.pregunta!=null){
             this.msg = this.pregunta.getIdpregunta()+"";
             return pdao.buscaPregunta(this.pregunta.getIdpregunta())!=null;
-            
-            /*if(pdao.buscaPregunta(Integer.parseInt(id))!=null){
-                this.msg="Hola========================";
-                return true;
-            }else{
-                this.msg="No existe";
-                return false;
-            }*/
         }else{
-            this.msg="   Error 404: No existe la pagina que estas buscando ";
+            this.msg="   Error 404: No existe la pregunta que estás buscando";
             return false;
         }
     }

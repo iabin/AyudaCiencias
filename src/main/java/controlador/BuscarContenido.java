@@ -17,14 +17,18 @@ import modelo.*;
 
 /**
  *
- * @author jonathan
+ * @author Iabin
  */
 @ManagedBean
 @SessionScoped
+/**
+ * Clase que modela el caso de uso de buscar contenido
+ */
 public class BuscarContenido  {
     
     
-    private String buscar;
+    private String buscar;//Cadena a buscar
+    //Resultado de la busqueda
     private List<Pregunta> resultado = new ArrayList<Pregunta>();
 
     public List<Pregunta> getResultado() {
@@ -45,7 +49,9 @@ public class BuscarContenido  {
         this.buscar = aBuscar;
         
     }
-    
+    /**
+     * Metodo que busca la cadena que pertenece a la clase
+     */
     public void busca(){
         
         this.resultado = new PreguntaDAO().buscaPorTitulo(buscar);

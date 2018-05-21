@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.util.List;
@@ -12,8 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
- *
- * @author Alan
+ *Clase que hace consultas a la tabla usuario
+ * @author Iabin
  */
 public class UsuarioDAO {
     
@@ -26,6 +21,10 @@ public class UsuarioDAO {
         this.sessionFactory = HibernateUtil.getSessionFactory();
     }
     
+    /**
+     * Devuelve una lista con todos los usuarios
+     * @return una lista con todos los usuarios
+     */
     public List<Usuario> usuarios() {
         List<Usuario> result = null;
         // arbrimos la sesion son sessionFactory 
@@ -53,6 +52,11 @@ public class UsuarioDAO {
         return result;
     }
     
+    /**
+     * Busca un usario segun id
+     * @param id id a buscar
+     * @return el usuario con ese id
+     */
     public Usuario buscaUsuario(int id) {
         List<Usuario> result = null;
         // arbrimos la sesion son sessionFactory 
@@ -82,6 +86,11 @@ public class UsuarioDAO {
         return result.get(0);
     }
     
+    /**
+     * Guarda en la base a un usuario
+     * @param u usuario a guardar
+     * @return true si tuvo exito false en otro caso
+     */
     public boolean nuevoUsuario(Usuario u){
          // arbrimos la sesion son sessionFactory 
         Session session = sessionFactory.openSession();
@@ -108,6 +117,11 @@ public class UsuarioDAO {
     
     }
     
+    /**
+     * Elimina un usuario dado 
+     * @param u usuario a eliminar
+     * @return true si fue exitoso, false en otro caso
+     */
     public boolean eliminaUsuario(Usuario u){
          // arbrimos la sesion son sessionFactory 
         Session session = sessionFactory.openSession();

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.util.List;
@@ -12,8 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
- *
- * @author Alan
+ *Clase que hace consultas en la tabla de Pregunta
+ * @author Iabin
  */
 public class PreguntaDAO {
     private SessionFactory sessionFactory;
@@ -81,7 +76,11 @@ public class PreguntaDAO {
         }
         return result;
     }
-    
+    /**
+     * Constructor que busca una pregunta por su id
+     * @param id id de la pregunta
+     * @return Pregunta que coincide el id
+     */
     public Pregunta buscaPregunta(int id) {
         Pregunta result = null;
         // arbrimos la sesion son sessionFactory 
@@ -110,6 +109,11 @@ public class PreguntaDAO {
         return result;
     }
     
+    /**
+     * Metodo que crea una nueva pregunta en la base de datos
+     * @param u pregunta a guardar
+     * @return true si la guardo de manera correcta, false en otro caso
+     */
     public boolean nuevaPregunta(Pregunta u){
          // arbrimos la sesion son sessionFactory 
         Session session = sessionFactory.openSession();
@@ -134,7 +138,11 @@ public class PreguntaDAO {
         return true;
     
     }
-    
+    /**
+     * Elimina una pregunta dada
+     * @param u la pregnta a eliminar
+     * @return true si se elimino con exito 
+     */
     public boolean eliminaPregunta(Pregunta u){
          // arbrimos la sesion son sessionFactory 
         Session session = sessionFactory.openSession();
@@ -159,7 +167,11 @@ public class PreguntaDAO {
         return true;
     
     }
- 
+    /**
+     * Actualiza la pregunta dada
+     * @param u pregunta a actualizar
+     * @return true si la actualizacion fue exitosa
+     */
     public boolean actualizaPregunta(Pregunta u){
          // arbrimos la sesion son sessionFactory 
         Session session = sessionFactory.openSession();

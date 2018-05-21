@@ -14,12 +14,15 @@ import modelo.*;
 
 /**
  *
- * @author jonathan
+ * @author Iabin
  */
 @ManagedBean
 @RequestScoped
+/**
+ * Clase que modela el caso de uso de ver todas las preguntsas
+ */
 public class VerPreguntas {
-    
+    //Todas las preguntas
     private List<Pregunta> preguntas;
     
    
@@ -29,6 +32,9 @@ public class VerPreguntas {
     }
     
    
+    /**
+     * Metodo que se ejecuta siempre al construir y genera una lista con todas las preguntas
+     */
     @PostConstruct
     public void ver() {
         PreguntaDAO lib = new PreguntaDAO();

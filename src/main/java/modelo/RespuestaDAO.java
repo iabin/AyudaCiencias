@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import java.util.List;
@@ -12,8 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 /**
- *
- * @author Alan
+ *Clase que hace consultas con la tabla de respuesta
+ * @author Iabin
  */
 public class RespuestaDAO {
     private SessionFactory sessionFactory;
@@ -25,6 +20,10 @@ public class RespuestaDAO {
         this.sessionFactory = HibernateUtil.getSessionFactory();
     }
     
+    /**
+     * Devuelve una lista con TODAS las preguntas
+     * @return lista con todas las preguntas
+     */
     public List<Respuesta> respuestas() {
         List<Respuesta> result = null;
         // arbrimos la sesion son sessionFactory 
@@ -52,6 +51,11 @@ public class RespuestaDAO {
         return result;
     }
     
+    /**
+     * Busca una respuesta con un id dado
+     * @param id a buscar 
+     * @return respuesta con ese ID
+     */
     public Respuesta buscaRespuesta(int id) {
         List<Respuesta> result = null;
         // arbrimos la sesion son sessionFactory 
@@ -79,6 +83,11 @@ public class RespuestaDAO {
         return result.get(0);
     }
     
+    /**
+     * Guarda la respuesta dada en la base de datos
+     * @param u Respuesta a guardar
+     * @return true si la consulta fue exitosa, false en otro caso
+     */
     public boolean nuevaRespuesta(Respuesta u){
          // arbrimos la sesion son sessionFactory 
         Session session = sessionFactory.openSession();
@@ -129,6 +138,11 @@ public class RespuestaDAO {
     
     }
     
+    /**
+     * Actualiza una respuesta 
+     * @param u respuesta a actualizar
+     * @return  true si fue exitosa, false en otro caso
+     */
     public boolean actualizaRespuesta(Respuesta u){
          // arbrimos la sesion son sessionFactory 
         Session session = sessionFactory.openSession();

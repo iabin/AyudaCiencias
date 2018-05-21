@@ -14,12 +14,14 @@ import static org.primefaces.component.focus.Focus.PropertyKeys.context;
 
 /**
  *
- * @author jonathan
  */
 //Etiqueta para decirle a jsf que esta clase es un controlador
 @ManagedBean
 //Etiqueta para que viva este bean hasta que se cambie de pagina. util para jax
 @ViewScoped
+/**
+ * Clase que modela el caso de usa de guardar pregunta
+ */
 public class GuardaPregunta {
     
    
