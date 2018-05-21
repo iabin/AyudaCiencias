@@ -71,13 +71,14 @@
                 <p:messages id="messages" showDetail="true" closable="true">
                     <p:autoUpdate/>
                 </p:messages>
-                <h2 class="form-signin-heading">Nueva Respuesta</h2>
+                <b:panel col-md="8" offset-md="2">
+                <h3>Nueva Respuesta</h3>
                 <b:inputText id="name" placeholder="Contenido" required="true" value="#{agregarRespuesta.contenido}">
                     <f:facet name="prepend">
                         <b:icon name="user" />
                     </f:facet>
                 </b:inputText>
-                
+              </b:panel>
                 <b:commandButton look="primary btn-block" value="Agregar" icon="log-in" size="lg" action="#{agregarRespuesta.agregarRespuesta(user.idusuario, verRespuestas.pregunta.idpregunta)}"/>
             </h:form>
         </b:container>
