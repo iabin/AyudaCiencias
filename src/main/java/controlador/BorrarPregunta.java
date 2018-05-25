@@ -35,6 +35,11 @@ public class BorrarPregunta {
         return pregunta;
     }
     
+    /**
+     * Clase que dada una pregunta la borra
+     * @param p string con el id de la pregunta
+     * @return string de retorno
+     */
     public String borrarPregunta(String p){
         //System.out.println("Aqui");
         
@@ -44,11 +49,11 @@ public class BorrarPregunta {
         
         for(Respuesta r:s){
             
-            //RespuestaDAO rd=new RespuestaDAO();
+            
             rd.eliminaRespuesta(r);
-          //  System.out.println(r.getContenido());
+
         } 
-        //this.p=pd.buscaPregunta(Integer.parseInt(p));
+        
         
         pd.eliminaPregunta(pd.buscaPregunta(Integer.parseInt(p)));
         

@@ -38,7 +38,11 @@ public class BorrarRespuesta {
     }
     
      
-    
+    /**
+     * Metodo que borra una respuesta dada un id 
+     * @param r string que representa el id
+     * @return string con la direccion de retorno
+     */
     public String borrarRespuesta(String r){
         Respuesta res = rd.buscaRespuesta(Integer.parseInt(r));
         rd.eliminaRespuesta(res);

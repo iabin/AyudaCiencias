@@ -13,13 +13,13 @@ import modelo.*;
 
 
 /**
- *
- * @author jonathan
+ *Clase que modela el caso de uso ver usuarios
+ * @author Alan
  */
 @ManagedBean
 @RequestScoped
 public class VerUsuarios {
-    
+    //La lista de usuarios
     private List<Usuario> usuarios;
     
    
@@ -28,7 +28,7 @@ public class VerUsuarios {
         return usuarios;
     }
     
-   
+   //Post constructor jala todos los usaurios de la base de datos
     @PostConstruct
     public void ver() {
         UsuarioDAO lib = new UsuarioDAO();

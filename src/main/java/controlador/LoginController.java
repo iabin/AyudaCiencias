@@ -14,16 +14,17 @@ import javax.faces.context.FacesContext;
 import modelo.*;
 
 /**
- *
- * @author jonathan
+ *Clase que modela la clase para ingresar y salir de session
+ * @author Uzziel
  */
 
 @ManagedBean
 @SessionScoped
 public class LoginController  {
     
-    
+    //Usuario
     private String username;
+    //contrasena
     private String password;
 
     public String getUsername() {
@@ -43,7 +44,10 @@ public class LoginController  {
     }
     
     
-    
+    /**
+     * Busca en todos los usuarios tu nombre y contrasena
+     * @return direccion de retorno
+     */
     public String login() {
         UsuarioDAO us = new UsuarioDAO();
         Usuario user = null;
@@ -70,7 +74,10 @@ public class LoginController  {
         
         }
     }
-
+    /**
+     * Sale de la session
+     * @return string de retorno
+     */
     public String  logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index?faces-redirect=true";

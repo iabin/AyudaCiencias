@@ -9,6 +9,10 @@ import modelo.Usuario;
 import modelo.UsuarioDAO;
 
 
+/**
+ * Clase que modela el caso de uso registrar
+ * @author Uzziel
+ */
 @ManagedBean
 @RequestScoped
 public class Registrar {
@@ -42,10 +46,11 @@ public class Registrar {
     }
     
    
-    public Registrar() {
-        //FacesContext.getCurrentInstance().getViewRoot().setLocale(new Locale("es-Mx"));
-    }
-
+ 
+    /**
+     * Metodo que hace persistente a un usario en la base de datos
+     * @return String con direccion de retorno
+     */
     public String agregarUsuario() {
        
             Usuario usuario = new Usuario();
