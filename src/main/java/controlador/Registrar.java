@@ -57,6 +57,13 @@ public class Registrar {
             usuario.setNombre(nombre);
             usuario.setCorreo(correo);
             usuario.setContrasena(contrasena);
+            
+            //Que pertenezca a ciencias
+            if(!correo.contains("@ciencias")){
+                 FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage("Necesita ser un correo de ciencias"));
+                return "";
+            }
            
             
             UsuarioDAO usuarioDAO = new UsuarioDAO();
