@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Confirmar Correo</title>
+
+        
+        <style type="text/css">
+            .form-signin {
+                margin: 0 auto;
+                max-width: 330px;
+                padding: 15px;
+            }
+        </style>
+    </h:head>
+    <h:body style="padding-top: 60px; background-color: #add;">
+        <b:container>
+            <h:form styleClass="form-signin" prependId="false">
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate/>
+                </p:messages>
+                <h2 class="form-signin-heading">Confirmar correo</h2>
+                <b:inputText id="email" placeholder="Correo Electronico" required="true" value="#{loginController.username}">
+                    <f:facet name="prepend">
+                        <b:icon name="glyphicon-envelope" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="password" placeholder="Contraseña" type="password" required="true" value="#{loginController.password}">
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
+                <b:commandButton look="primary btn-block" value="Ingresar" icon="log-in" size="lg" action="#{loginController.confirmar()}"/>
+            </h:form>
+        </b:container>
+    </h:body>
+</html>

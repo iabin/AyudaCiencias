@@ -44,6 +44,40 @@ public class LoginController  {
     }
     
     
+    
+    /**
+     * Busca en todos los usuarios tu nombre y contrasena
+     * @return direccion de retorno
+     */
+    public String confirmar() {
+        UsuarioDAO us = new UsuarioDAO();
+        Usuario user = null;
+        for(Usuario u: us.usuarios()){
+            if(u.getCorreo().equalsIgnoreCase(this.username)&&u.getContrasena().equalsIgnoreCase(password)){
+                user = u;
+                break;
+            }
+        }
+        user.setConfirmado(true);
+        us.actualizaUsuario(user);
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        if (user == null) {
+            context.addMessage(null, new FacesMessage("No se pudo hacer logín,Usuario no encontrado"));
+            username = null;
+            password = null;
+            return "";
+        } else{
+            
+            context.getExternalContext().getSessionMap().put("user", user);
+            context.addMessage(null, new FacesMessage("Inicio Exitoso"));
+            username = null;
+            password = null;
+            return "/index.xhtml?faces-redirect=true";
+        
+        }
+    }
+    
     /**
      * Busca en todos los usuarios tu nombre y contrasena
      * @return direccion de retorno
@@ -65,6 +99,12 @@ public class LoginController  {
             password = null;
             return "";
         } else{
+            if(user.isConfirmado()==false){
+            context.addMessage(null, new FacesMessage("No se ha verificado su correo"));
+            username = null;
+            password = null;
+            return "";
+            }
             
             context.getExternalContext().getSessionMap().put("user", user);
             context.addMessage(null, new FacesMessage("Inicio Exitoso"));

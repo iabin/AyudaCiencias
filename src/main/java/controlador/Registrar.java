@@ -111,22 +111,16 @@ public class Registrar {
            
             
             UsuarioDAO usuarioDAO = new UsuarioDAO();
-            for(Usuario o:usuarioDAO.usuarios()){
-                if (o.getCorreo().equalsIgnoreCase(correo)){
-                     FacesContext context = FacesContext.getCurrentInstance();
-                    context.addMessage(null, new FacesMessage("Ese correo ya fue registrado"));
-                    return "";
-                }
-            }
-          
-                
+           
             Boolean r = usuarioDAO.nuevoUsuario(usuario);
             if(!r){
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, new FacesMessage("Agregado incorrectamente"));
                 return "ingresar.xhtml?faces-redirect=true";
             }
-            enviarCorreo(correo, "confirma tu registro", "intenta iniciar sesion para comprobar el registro");
+             FacesContext context = FacesContext.getCurrentInstance();
+            
+            enviarCorreo(correo, "confirma tu registro", "intenta iniciar sesion para comprobar el registro"+" http://localhost:8084/AyudaCiencias/confirmar.xhtml");
         
     return "index.xhtml?faces-redirect=true"; 
     }
